@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="yemekDetayFragment" type="com.cigdemkocak.foodorderapp.ui.fragment.YemekDetayFragment" />
+        <variable name="yemekNesnesi" type="com.cigdemkocak.foodorderapp.data.entity.Yemekler" />
+        <variable name="adetSayisi" type="String" />
+        <variable name="kullaniciAdi" type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EAEAEA"
+        tools:context=".ui.fragment.YemekDetayFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarYemekDetay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Yemek Detay"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/monda"
+                tools:layout_editor_absoluteX="172dp"
+                tools:layout_editor_absoluteY="419dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ust_bolum_tasarim" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/gradient_button_bg"
+            android:onClick="@{() -> yemekDetayFragment.buttonEksiTikla(adetSayisi)}"
+            android:text="-"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            yemek_resim="@{yemekNesnesi.yemek_resim_adi}"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekDetay"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@{yemekNesnesi.yemek_adi}"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:text='@{Integer.toString(yemekNesnesi.yemek_fiyat)+ " ₺"}'
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Bu muhteşem lezzeti kaçırmayın. Hemen sipariş verin 30 dakika içinde kapınıza gelsin. Yoksa Getfoody ayrıcalıklı lezzetini henüz denemediniz mi?"
+            android:textColor="#575656"
+            android:textSize="16sp"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/gradient_button_bg"
+            android:onClick="@{() -> yemekDetayFragment.buttonArtiTikla(adetSayisi)}"
+            android:text="+"
+            android:textSize="22sp"
+            app:backgroundTint="@null"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/gradient_button_bg"
+            android:onClick="@{() -> yemekDetayFragment.buttonSepeteYemekEkle(yemekNesnesi.yemek_adi,yemekNesnesi.yemek_resim_adi,yemekNesnesi.yemek_fiyat,Integer.parseInt(adetSayisi),kullaniciAdi)}"
+            android:stateListAnimator="@null"
+            android:text="SEPETE EKLE"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.544"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/adet_background" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{adetSayisi}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Teslimat Süresi : 30 dk"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="45dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/saat" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

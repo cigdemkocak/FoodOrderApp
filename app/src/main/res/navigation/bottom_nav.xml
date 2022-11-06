@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/anasayfaFragment">
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.cigdemkocak.foodorderapp.ui.fragment.AnasayfaFragment"
+        android:label="fragment_anasayfa"
+        tools:layout="@layout/fragment_anasayfa" >
+        <action
+            android:id="@+id/yemekDetayGecis"
+            app:destination="@id/yemekDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorilerFragment"
+        android:name="com.cigdemkocak.foodorderapp.ui.fragment.FavorilerFragment"
+        android:label="fragment_favoriler"
+        tools:layout="@layout/fragment_favoriler" />
+    <fragment
+        android:id="@+id/hesabimFragment"
+        android:name="com.cigdemkocak.foodorderapp.ui.fragment.HesabimFragment"
+        android:label="fragment_hesabim"
+        tools:layout="@layout/fragment_hesabim" />
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.cigdemkocak.foodorderapp.ui.fragment.SepetFragment"
+        android:label="fragment_sepet"
+        tools:layout="@layout/fragment_sepet" >
+        <argument
+            android:name="toplam"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/eksiBakiye"
+            app:destination="@id/sepetFragment" />
+        <argument
+            android:name="eksiBakiye"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/yemekDetayFragment"
+        android:name="com.cigdemkocak.foodorderapp.ui.fragment.YemekDetayFragment"
+        android:label="fragment_yemek_detay"
+        tools:layout="@layout/fragment_yemek_detay" >
+        <argument
+            android:name="yemek"
+            app:argType="com.cigdemkocak.foodorderapp.data.entity.Yemekler" />
+        <action
+            android:id="@+id/sepeteToplamGonderme"
+            app:destination="@id/sepetFragment" />
+    </fragment>
+</navigation>

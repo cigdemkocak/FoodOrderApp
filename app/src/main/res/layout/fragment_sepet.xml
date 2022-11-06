@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="sepetFragment" type="com.cigdemkocak.foodorderapp.ui.fragment.SepetFragment" />
+        <variable name="sepetAdapter" type="com.cigdemkocak.foodorderapp.ui.adapter.SepetAdapter" />
+        <variable name="sepetNesnesi" type="com.cigdemkocak.foodorderapp.data.entity.SepetYemekler" />
+        <variable name="sepetViewModel" type="com.cigdemkocak.foodorderapp.ui.viewmodel.SepetViewModel" />
+        <variable name="sepetToplam" type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EAEAEA"
+        tools:context=".ui.fragment.SepetFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Sepetim"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/monda"
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="12dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSepet"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adapter="@{sepetAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Toplam Ücret:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSepetiOnayla"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/toplam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text='@{sepetToplam + " ₺"}'
+            android:textColor="@color/anaRenk"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSepetiOnayla"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvSepet"
+            app:srcCompat="@drawable/catal_bicak_bg" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:srcCompat="@drawable/catal" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Çatal Bıçak Seçimi"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/rvSepet" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="63dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/rvSepet" />
+
+        <Button
+            android:id="@+id/buttonSepetiOnayla"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/gradient_button_bg"
+            android:text="SEPETİ ONAYLA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvSepet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:srcCompat="@drawable/catal_bicak_bg" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvSepet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:srcCompat="@drawable/kurye" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teslimatınız 30 dk içinde kapınızda..."
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/cantarell"
+            app:layout_constraintBottom_toTopOf="@+id/rvSepet"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/imageView11"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
